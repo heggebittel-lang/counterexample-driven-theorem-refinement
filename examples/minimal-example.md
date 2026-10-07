@@ -76,3 +76,60 @@ This is a reduction from a stronger regularity assumption (continuity) to the ex
 The point is not the elementary theorem. The point is the research move:
 
 bundled theorem -> ablation -> valid counterexample -> obstruction -> split dependencies -> weaker interpretable condition.
+
+
+## Absorb the counterexample instead of repairing it away
+
+The previous analysis can still be too conservative if it treats multiplicity only as a problem to be excluded.
+
+After A2 (strict monotonicity) is deleted, the multiple-zero example is not merely evidence that uniqueness fails. It reveals a genuine second regime.
+
+So instead of immediately restoring A2, keep A2 deleted and expand the theory.
+
+Let
+
+Z(f) = {x in (0,1) : f(x)=0}.
+
+Under the intermediate value property and the endpoint signs,
+
+> Z(f) is nonempty.
+
+But without an additional uniqueness restriction, multiplicity is not just possible; it can be arbitrarily rich:
+
+> For every positive integer n, there exists a continuous function f:[0,1]->R with f(0)<0 and f(1)>0 such that Z(f) contains at least n distinct points.
+
+A piecewise-linear zig-zag construction gives such examples.
+
+This turns the counterexample into a positive failure theorem.
+
+The theory now contains at least two regimes:
+
+### Existence regime
+
+Intermediate value property + endpoint sign reversal
+
+-> at least one zero.
+
+### Uniqueness regime
+
+Existence conditions + a suitable uniqueness restriction such as strict monotonicity
+
+-> exactly one zero.
+
+### Multiplicity regime
+
+Existence conditions without a uniqueness restriction
+
+-> arbitrarily many distinct zeros are compatible with the maintained assumptions.
+
+The important move is that strict monotonicity is no longer reintroduced merely because the original theorem wanted uniqueness. We first preserve the weaker model and characterize what new behavior becomes possible after the assumption is removed.
+
+The desired endpoint is therefore not
+
+> counterexample -> add assumption -> recover original theorem,
+
+but rather
+
+> delete assumption -> counterexample -> recognize an interesting regime -> prove a theorem about that regime -> characterize the boundary between regimes.
+
+This is the central CDTR principle.
