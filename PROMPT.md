@@ -40,7 +40,7 @@ Proceed as follows:
 
 12. Verification: distinguish theorem failure from proof failure; check quantifiers, domains, boundary cases, existence vs uniqueness, imported theorem hypotheses, normalization vs identification, and hidden regularity assumptions.
 
-13. Final rewrite: only after the mathematics stabilizes, remove conversational residue such as "not X but Y," "we do not need X," or "rather than X." Replace it with definitions, conditions, and formal conclusions. Preserve research history only when it is substantively relevant.
+13. Boundary formalization and final rewrite: after the mathematics stabilizes, do not leave vague diagnostic negatives as the final result. Replace statements such as "uniqueness is not guaranteed" with a formal condition-result statement: identify a condition C under which uniqueness holds, state whether C is sufficient/necessary, and characterize what may occur when C fails. For example, for minimization over a convex feasible set, strict convexity along feasible segments gives at most one minimizer; with existence, the optimum is unique (strict concavity is the analogous maximization condition). Then remove conversational residue such as "not X but Y," "we do not need X," or "rather than X" and replace it with definitions, conditions, regime partitions, and formal conclusions.
 
 14. Novelty audit last: do not create novelty by mechanically combining papers. Separate standard tools from the substantive claim, and do not make a priority claim when prior art is uncertain.
 
