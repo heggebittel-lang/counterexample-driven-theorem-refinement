@@ -38,8 +38,7 @@ CDTR 的目标是把 AI 的角色改成一个 adversarial research partner：它
 1. **删假设**：每次只攻击一个假设，并要求 proof / counterexample / unresolved obligation。
 2. **反例不是要自动排除的东西**：如果反例本身稳健、有解释、而且属于合理的模型空间，就不要为了救原定理重新加假设把它删掉；保留反例，继续删除假设，把它升级成新的 regime / theorem / impossibility result。
 3. **反例不是终点**：把一族反例提炼成 obstruction，并寻找什么条件把“原结论成立的区域”和“反例行为出现的区域”分开。
-4. **目标可以是双边理论**：例如得到 (O\Rightarrow Y) 与 (
-eg O\Rightarrow Z)，而不是只得到“加上 O 后原定理重新成立”。
+4. **目标可以是双边理论**：例如得到 `O => Y` 与 `not O => Z`，而不是只得到“加上 O 后原定理重新成立”。
 5. **从 sufficient 到 iff**：分别测试充分性与必要性。
 6. **危险假设倒过来**：如果一个假设看起来几乎等于结论，尝试把它变成 theorem 或 necessary condition。
 7. **压到 primitives / observables / support / information**：不要停留在无法观察的抽象条件。
