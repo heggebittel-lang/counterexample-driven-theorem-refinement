@@ -57,13 +57,18 @@ existence / uniqueness / representation / identification / characterization / im
 - Construction:
 - Retained assumptions verified:
 - Conclusion violated:
-- Structural obstruction suggested:
 - Robust to perturbation?:
+- Disposition: EXCLUDE / ABSORB / UNRESOLVED
+- Why:
+- Failure regime / positive theorem generated from this counterexample:
+- Structural obstruction separating regimes:
+- New dependency changes:
 
 ## 9. Current frontier
 
 - Strongest proved positive result:
 - Strongest proved negative result:
-- Best current characterization:
+- Strongest counterexample-derived result:
+- Best current regime partition / characterization:
 - Weakest unresolved assumption:
 - Highest-value next attack:
