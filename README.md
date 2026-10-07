@@ -6,7 +6,7 @@ CDTR is not a collection of magic prompt phrases. It is a research protocol for 
 
 The core loop is:
 
-**assumption ablation -> counterexample -> obstruction -> theorem repair -> necessity/sufficiency -> primitive reduction -> information lower bound -> dependency compression -> verification**
+**assumption ablation -> counterexample -> absorb interesting failures into the theory -> obstruction -> regime characterization -> necessity/sufficiency -> primitive reduction -> information lower bound -> dependency compression -> verification**
 
 ## Why this exists
 
@@ -28,14 +28,16 @@ A tiny example is in [`examples/minimal-example.md`](./examples/minimal-example.
 
 1. Delete assumptions rather than automatically preserve them.
 2. Require a proof, counterexample, or explicit open obligation for every attempted deletion.
-3. Turn isolated counterexamples into structural obstructions.
-4. Push sufficient results toward necessity and iff characterizations.
-5. Turn suspicious assumptions into conclusions when possible.
-6. Reduce abstract conditions to primitives, observables, support, or information.
-7. Prove why extra information matters, rather than only showing that one design works.
-8. Rebuild theorem/lemma dependencies as a DAG and remove assumption creep.
-9. Track statement status so that conjectures are not silently promoted to theorems.
-10. Remove conversational residue only after the mathematics has stabilized.
+3. **Do not automatically exclude an interesting counterexample.** If the failure is robust or structurally meaningful, keep the assumption deleted and promote the counterexample into a second regime/result.
+4. Turn counterexample families into structural obstructions that separate regimes.
+5. Replace one-sided theorems, when possible, by characterizations that explain both success and failure.
+6. Push sufficient results toward necessity and iff characterizations.
+7. Turn suspicious assumptions into conclusions when possible.
+8. Reduce abstract conditions to primitives, observables, support, or information.
+9. Prove why extra information matters, rather than only showing that one design works.
+10. Rebuild theorem/lemma dependencies as a DAG and remove assumption creep.
+11. Track statement status so that conjectures are not silently promoted to theorems.
+12. Remove conversational residue only after the mathematics has stabilized.
 
 ## What it is not
 
@@ -46,7 +48,9 @@ CDTR is not:
 - a literature-gap generator,
 - a paper-writing automation pipeline,
 - a claim that every theorem should use logically minimal assumptions,
-- a claim that counterexamples alone constitute theory.
+- a claim that every counterexample is automatically important.
+
+A counterexample becomes theoretically valuable when it can be verified, generalized, interpreted, and integrated into a broader result.
 
 The workflow explicitly keeps interpretability, verification, and domain meaning as constraints.
 
@@ -57,6 +61,7 @@ Give the model your current theorem, model, proof, or paper excerpt and invoke a
 - `diagnose`
 - `ablate`
 - `counterexample`
+- `absorb`
 - `obstruction`
 - `characterize`
 - `primitive`
@@ -93,7 +98,7 @@ This is deliberately boring. It prevents a productive conversation from quietly 
 
 ## Origin
 
-The workflow grew out of my own attempts to do theoretical research with AI. In one project, an initially proposed "exit mechanism" in a rational-addiction model was repeatedly attacked until the original mechanism interpretation failed; the surviving questions shifted toward compensated comparison, falsification, support, and identification. The experience suggested that AI was most useful when asked to attack and restructure a theory rather than merely defend it.
+The workflow grew out of my own attempts to do theoretical research with AI. In one project, an initially proposed "exit mechanism" in a rational-addiction model was repeatedly attacked until the original mechanism interpretation failed; the surviving questions shifted toward compensated comparison, falsification, support, and identification. The experience suggested that AI was most useful when asked to attack and restructure a theory rather than merely defend it. A further lesson was that some failures should not be "repaired away": when a counterexample reveals an admissible and interesting behavior, the better theory may be the one that deletes the excluding assumption and explains both regimes.
 
 The historical research archive is here:
 
