@@ -22,25 +22,27 @@ Proceed as follows:
 
 3. Counterexample search: prefer the smallest informative failure (low dimension, small finite support, simple algebra, boundary/degenerate cases). Verify every retained assumption explicitly.
 
-4. Obstruction extraction: do not stop at a counterexample. Identify the structural feature causing a family of failures. Test whether excluding that obstruction repairs the theorem.
+4. Counterexample triage and absorption: do NOT automatically repair a failed theorem by adding an assumption that excludes the counterexample. First classify the verified counterexample as EXCLUDE, ABSORB, or UNRESOLVED. If the counterexample is robust, interpretable, admissible, or reveals a natural alternative behavior, default toward ABSORB: keep the assumption deleted and turn the failure into a second regime, theorem, impossibility result, multiplicity result, or other positive part of the theory.
 
-5. Repair the theorem: replace failed statements with the weakest interpretable condition currently justified. Split bundled conclusions when they use different assumptions.
+5. Obstruction extraction: compare the original-success cases with the absorbed counterexample family. Identify the structural feature O separating them. Prefer a theory of the form O=>Y and not-O=>Z, or Y iff O with a substantive characterization of the complementary regime Z.
 
-6. Necessity/sufficiency: test C=>Y and Y=>C separately. Push sufficient conditions toward iff characterizations when possible. Never call a condition "sharp" without a necessity/optimality/impossibility certificate.
+6. Repair or expand the theorem: do not merely recover the original theorem. Build the weakest interpretable theory that explains both the original result and any interesting failure regimes. Split bundled conclusions when they use different assumptions.
 
-7. Reverse dangerous assumptions: if an assumption is suspiciously close to the desired conclusion, try to derive it as a theorem, necessary condition, or conclusion from more primitive assumptions.
+7. Necessity/sufficiency: test C=>Y and Y=>C separately. Push sufficient conditions toward iff characterizations when possible. Never call a condition "sharp" without a necessity/optimality/impossibility certificate.
 
-8. Primitive/observable reduction: reduce high-level structural conditions to primitives, observables, support, rank, information, or experimentally available comparisons whenever possible. Write observational equivalence explicitly when identification is at issue.
+8. Reverse dangerous assumptions: if an assumption is suspiciously close to the desired conclusion, try to derive it as a theorem, necessary condition, or conclusion from more primitive assumptions.
 
-9. Information advantage / nearby failure: do not only prove that a richer design works. Compare weak and rich information sets. Try to prove a negative result under the weak information set via observationally equivalent environments that disagree on the target. When relevant, construct arbitrarily nearby failures and state the metric/topology.
+9. Primitive/observable reduction: reduce high-level structural conditions to primitives, observables, support, rank, information, or experimentally available comparisons whenever possible. Write observational equivalence explicitly when identification is at issue.
 
-10. Dependency DAG: rebuild the dependencies among definitions, assumptions, lemmas, propositions, and conclusions. Remove unused assumptions, proof-artifact dependencies, circularity, and assumptions inherited only because earlier lemmas were over-broad.
+10. Information advantage / nearby failure: do not only prove that a richer design works. Compare weak and rich information sets. Try to prove a negative result under the weak information set via observationally equivalent environments that disagree on the target. When relevant, construct arbitrarily nearby failures and state the metric/topology.
 
-11. Verification: distinguish theorem failure from proof failure; check quantifiers, domains, boundary cases, existence vs uniqueness, imported theorem hypotheses, normalization vs identification, and hidden regularity assumptions.
+11. Dependency DAG: rebuild the dependencies among definitions, assumptions, lemmas, propositions, and conclusions. Remove unused assumptions, proof-artifact dependencies, circularity, and assumptions inherited only because earlier lemmas were over-broad.
 
-12. Final rewrite: only after the mathematics stabilizes, remove conversational residue such as "not X but Y," "we do not need X," or "rather than X." Replace it with definitions, conditions, and formal conclusions. Preserve research history only when it is substantively relevant.
+12. Verification: distinguish theorem failure from proof failure; check quantifiers, domains, boundary cases, existence vs uniqueness, imported theorem hypotheses, normalization vs identification, and hidden regularity assumptions.
 
-13. Novelty audit last: do not create novelty by mechanically combining papers. Separate standard tools from the substantive claim, and do not make a priority claim when prior art is uncertain.
+13. Final rewrite: only after the mathematics stabilizes, remove conversational residue such as "not X but Y," "we do not need X," or "rather than X." Replace it with definitions, conditions, and formal conclusions. Preserve research history only when it is substantively relevant.
+
+14. Novelty audit last: do not create novelty by mechanically combining papers. Separate standard tools from the substantive claim, and do not make a priority claim when prior art is uncertain.
 
 At each iteration output:
 - Current claim
@@ -48,8 +50,10 @@ At each iteration output:
 - Assumptions actually used
 - Highest-value attack
 - Certificate (proof / counterexample / unresolved obligation)
-- Obstruction
-- Repaired statement
+- Counterexample disposition (EXCLUDE / ABSORB / UNRESOLVED)
+- Failure regime / theorem generated by the counterexample
+- Obstruction separating regimes
+- Repaired or expanded theory
 - Dependency update
 - Remaining proof obligations
 - Single best next move
