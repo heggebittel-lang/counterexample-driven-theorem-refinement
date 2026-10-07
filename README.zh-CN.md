@@ -4,7 +4,7 @@
 
 它的核心不是让 AI 帮你维护原来的想法，而是让 AI 主动攻击当前理论：
 
-**删假设 -> 找反例 -> 提取 obstruction -> 修定理 -> 做 necessity/sufficiency -> 压到 primitives/observables -> 证明信息优势或附近失败 -> 重建依赖 DAG -> 验证**
+**删假设 -> 找反例 -> 把有趣反例吸收到理论中 -> 提取 obstruction -> 划分/刻画不同 regime -> 做 necessity/sufficiency -> 压到 primitives/observables -> 证明信息优势或附近失败 -> 重建依赖 DAG -> 验证**
 
 ## 为什么要做这个仓库
 
@@ -36,20 +36,27 @@ CDTR 的目标是把 AI 的角色改成一个 adversarial research partner：它
 ## 这套流程特别强调的事情
 
 1. **删假设**：每次只攻击一个假设，并要求 proof / counterexample / unresolved obligation。
-2. **反例不是终点**：反例要继续提炼成可以解释一族失败的 obstruction。
-3. **从 sufficient 到 iff**：分别测试充分性与必要性。
-4. **危险假设倒过来**：如果一个假设看起来几乎等于结论，尝试把它变成 theorem 或 necessary condition。
-5. **压到 primitives / observables / support / information**：不要停留在无法观察的抽象条件。
-6. **证明 information advantage / nearby failure**：说明为什么额外信息真的不可替代。
-7. **依赖关系重构**：避免 assumption creep，把 existence、uniqueness、identification 等不同结论拆开。
-8. **最后再去掉对话痕迹**：研究过程可以很乱，但最终 theorem architecture 应该由定义、条件和结论组织。
-9. **最后再做 novelty audit**：先把数学对象搞清楚，再查是不是新结果。
+2. **反例不是要自动排除的东西**：如果反例本身稳健、有解释、而且属于合理的模型空间，就不要为了救原定理重新加假设把它删掉；保留反例，继续删除假设，把它升级成新的 regime / theorem / impossibility result。
+3. **反例不是终点**：把一族反例提炼成 obstruction，并寻找什么条件把“原结论成立的区域”和“反例行为出现的区域”分开。
+4. **目标可以是双边理论**：例如得到 (O\Rightarrow Y) 与 (
+eg O\Rightarrow Z)，而不是只得到“加上 O 后原定理重新成立”。
+5. **从 sufficient 到 iff**：分别测试充分性与必要性。
+6. **危险假设倒过来**：如果一个假设看起来几乎等于结论，尝试把它变成 theorem 或 necessary condition。
+7. **压到 primitives / observables / support / information**：不要停留在无法观察的抽象条件。
+8. **证明 information advantage / nearby failure**：说明为什么额外信息真的不可替代。
+9. **依赖关系重构**：避免 assumption creep，把 existence、uniqueness、identification 等不同结论拆开。
+10. **最后再去掉对话痕迹**：研究过程可以很乱，但最终 theorem architecture 应该由定义、条件和结论组织。
+11. **最后再做 novelty audit**：先把数学对象搞清楚，再查是不是新结果。
 
 ## 一个重要的停止规则
 
 这套流程并不认为“假设越少越好”。如果继续削弱只会得到逻辑上更弱、但完全失去经济/数学解释的怪条件，就应该停止。
 
-真正想优化的是：
+这里还有一个更核心的原则：
+
+> **不要把“反例存在”自动理解成“需要一个新假设排除它”。如果反例本身有结构，它可以成为理论的另一半。**
+
+因此真正想优化的是：
 
 - logical sharpness，
 - structural meaning，
