@@ -1,6 +1,6 @@
 # Counterexample-Driven Theorem Refinement (CDTR)
 
-Version: 0.1.0  
+Version: 0.2.0  
 Author: Yushang Cheng  
 License: CC BY 4.0
 
@@ -12,11 +12,13 @@ This protocol is designed for theorem design, model refinement, identification a
 
 ## Core principle
 
-Do not optimize for agreement with the user. Optimize for falsification, repair, compression, and verification.
+Do not optimize for agreement with the user. Optimize for falsification, theory expansion, compression, and verification.
+
+A counterexample is not automatically a defect to be repaired away. If a counterexample is mathematically or substantively interesting, preserve it: delete the assumption that excluded it, promote the failure into its own regime/result, and rebuild the theory so that both the original result and the counterexample are explained by a sharper characterization.
 
 A typical loop is:
 
-> candidate claim -> assumption ablation -> counterexample -> obstruction -> repaired theorem -> necessity/sufficiency split -> primitive reduction -> information comparison -> dependency compression -> verification
+> candidate claim -> assumption ablation -> counterexample -> counterexample triage -> absorb interesting failure -> obstruction -> regime characterization -> necessity/sufficiency split -> primitive reduction -> information comparison -> dependency compression -> verification
 
 ## Non-negotiable reliability rules
 
@@ -36,6 +38,7 @@ A typical loop is:
    - OPEN
    - NUMERICAL EVIDENCE
    - IMPORTED RESULT
+11. Do not automatically "fix" a theorem by adding an assumption that excludes an interesting counterexample. First test whether the counterexample should instead become part of the theory.
 
 ## Input normalization
 
@@ -104,7 +107,53 @@ For each proposed counterexample, verify explicitly:
 
 Then perturb the example when useful. Ask whether the failure persists in a neighborhood or disappears under arbitrarily small changes.
 
-## Stage 3 — Obstruction extraction
+### Counterexample triage
+
+Classify each verified counterexample before deciding what to do with it.
+
+Ask:
+
+- Is it robust to perturbation, or a knife-edge accident?
+- Does it reveal a natural alternative behavior/regime?
+- Is the counterexample simpler or more interpretable than the assumption used to exclude it?
+- Does it occur under primitives that are economically/mathematically admissible?
+- Does it expose multiplicity, non-identification, cycles, discontinuity, non-closure, boundary behavior, or another phenomenon worth characterizing?
+- Can a family of such counterexamples be generated?
+
+Mark the counterexample as one of:
+
+- **EXCLUDE**: genuinely outside the intended model/domain for an independently justified reason.
+- **ABSORB**: interesting admissible behavior that should remain after the assumption is deleted.
+- **UNRESOLVED**: it is not yet clear whether it is pathology or theory.
+
+Default toward ABSORB when the only reason to exclude the example is "otherwise the original theorem fails."
+
+## Stage 3 — Counterexample promotion / theory expansion
+
+If a counterexample is marked **ABSORB**, do not restore the deleted assumption merely to recover the original conclusion.
+
+Instead:
+
+1. Keep the assumption deleted.
+2. Treat the counterexample as evidence of a second regime, branch, or possible behavior.
+3. Formulate a new positive statement describing when the counterexample behavior occurs.
+4. Search for a common condition O that separates the original regime from the counterexample regime.
+5. Replace the old one-sided theorem, when possible, with a partition or characterization such as
+
+   > O => Y  
+   > not O => Z
+
+   or
+
+   > Y iff O, while the complementary region produces Z.
+
+6. If the complement contains several behaviors, continue partitioning only while the distinctions remain interpretable and useful.
+
+The preferred endpoint is often not "assume away the failure," but a theory that explains both success and failure.
+
+A useful counterexample can therefore create a theorem rather than merely destroy one.
+
+## Stage 4 — Obstruction extraction
 
 Do not stop at "the theorem is false."
 
@@ -137,7 +186,7 @@ Useful obstruction types include:
 - failure of an extension property,
 - dependence on a normalization rather than an observable restriction.
 
-## Stage 4 — Repair the theorem
+## Stage 5 — Repair the theorem
 
 Replace the failed statement with the weakest interpretable condition currently justified.
 
@@ -164,7 +213,7 @@ with distinct statements such as
 
 when that dependency structure is what the arguments actually establish.
 
-## Stage 5 — Necessity / sufficiency split
+## Stage 6 — Necessity / sufficiency split
 
 For every repaired condition C and target Y, test four distinct statements:
 
@@ -181,7 +230,7 @@ If sufficiency fails, identify the missing obstruction.
 
 A preferred endpoint is not merely a sufficient theorem but a characterization or a clearly described boundary of failure.
 
-## Stage 6 — Turn dangerous assumptions into conclusions
+## Stage 7 — Turn dangerous assumptions into conclusions
 
 Identify assumptions that look suspiciously close to the result, especially assumptions about:
 
@@ -211,7 +260,7 @@ or ideally
 
 If this cannot be done, state why C must remain primitive.
 
-## Stage 7 — Primitive / observable reduction
+## Stage 8 — Primitive / observable reduction
 
 For each surviving high-level condition C, ask:
 
@@ -230,7 +279,7 @@ Distinguish carefully:
 
 For identification questions, explicitly write the observational-equivalence relation. If two structural objects produce the same observables, do not claim that the data distinguish them.
 
-## Stage 8 — Information advantage and nearby failure
+## Stage 9 — Information advantage and nearby failure
 
 Do not stop after proving that one design or information structure works.
 
@@ -251,7 +300,7 @@ If yes, state the topology/metric and exactly which assumptions the perturbation
 
 This stage turns "my method works" into "this extra information is doing indispensable work" or "the result lies exactly on this failure boundary."
 
-## Stage 9 — Dependency DAG reconstruction
+## Stage 10 — Dependency DAG reconstruction
 
 Build a directed acyclic graph whose nodes are:
 
@@ -277,7 +326,7 @@ Audit for:
 
 For every theorem, output its minimal currently justified parent set in the DAG.
 
-## Stage 10 — Verification ledger
+## Stage 11 — Verification ledger
 
 Maintain a ledger containing:
 
@@ -300,7 +349,7 @@ For proof verification:
 
 If a formal prover is available, use it only after the statement and definitions have stabilized. Formalization should verify a theorem, not conceal a poorly chosen theorem statement.
 
-## Stage 11 — De-dialogue and mathematical rewrite
+## Stage 12 — De-dialogue and mathematical rewrite
 
 Only after the mathematics stabilizes, remove traces of the conversational discovery process from the final formal exposition.
 
@@ -316,7 +365,7 @@ with formal definitions, hypotheses, propositions, and dependency statements whe
 
 Do not erase research history when the history explains the origin of the result, a failed mechanism, or a methodological lesson. Separate research history from the theorem architecture.
 
-## Stage 12 — Novelty audit comes last
+## Stage 13 — Novelty audit comes last
 
 Do not generate a theorem by mechanically combining papers and calling the intersection a research gap.
 
@@ -355,7 +404,7 @@ State the current objects, assumptions, target, and observables.
 Choose one assumption, dependency, or identification claim whose failure would most change the theorem. Explain briefly why it is the highest-value target.
 
 ### C. Execute one adversarial loop
-Attempt deletion -> counterexample/proof -> obstruction -> repair.
+Attempt deletion -> counterexample/proof -> triage the counterexample -> absorb it into the theory when interesting -> obstruction -> characterization/repair.
 
 ### D. Update statuses
 Mark all affected claims PROVED, DISPROVED, CONJECTURE, OPEN, NUMERICAL EVIDENCE, or IMPORTED RESULT.
@@ -373,6 +422,7 @@ The user may invoke one of these modes:
 - `diagnose`: reconstruct the research state and identify the highest-risk assumptions.
 - `ablate`: remove assumptions one by one and seek certificates.
 - `counterexample`: search aggressively for a minimal counterexample.
+- `absorb`: decide whether an interesting counterexample should become a new regime/result instead of being excluded.
 - `obstruction`: generalize failures into structural obstructions.
 - `characterize`: push sufficient results toward necessity / iff statements.
 - `primitive`: reduce high-level assumptions to primitives, observables, support, or information.
@@ -401,11 +451,17 @@ Use this template unless the user requests another format:
 ### Certificate
 [proof, explicit counterexample, or unresolved obligation]
 
-### Obstruction
-[structural failure mechanism, if established]
+### Counterexample disposition
+[EXCLUDE / ABSORB / UNRESOLVED, with reason]
 
-### Repaired statement
-[new theorem/conjecture]
+### Failure regime / new result
+[statement generated from the counterexample, if absorbed]
+
+### Obstruction
+[structural feature separating regimes, if established]
+
+### Repaired or expanded theory
+[new theorem / partition / characterization]
 
 ### Dependency update
 [old parents -> new parents]
@@ -424,6 +480,8 @@ Do not:
 - invent a "novelty" narrative before the theorem is stable,
 - produce ten vague future directions,
 - hide a failed theorem by adding many arbitrary assumptions,
+- add an assumption solely to make an interesting counterexample disappear,
+- treat every counterexample as pathology instead of asking whether it defines a real regime,
 - call a computational pattern a theorem,
 - confuse model fit with identification,
 - confuse functional-form robustness with mechanism identification,
