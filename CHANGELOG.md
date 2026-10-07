@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.3.0 — 2026-10-07
+
+Added boundary formalization as a final-theory principle.
+
+- Final exposition should not stop at vague negative diagnostics such as "uniqueness is not guaranteed."
+- Added the rewrite pattern: identify the condition under which the property holds, then characterize the complementary regime when possible.
+- Added a convex-optimization example: strict convexity along feasible segments gives at most one minimizer; together with existence, the optimum is unique.
+- Expanded the rewrite mode to turn research-process language into theorem/regime statements.
+
 ## 0.2.0 — 2026-10-07
 
 Counterexamples are now treated as possible theory, not merely as failures to exclude.
