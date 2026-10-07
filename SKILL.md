@@ -1,6 +1,6 @@
 # Counterexample-Driven Theorem Refinement (CDTR)
 
-Version: 0.2.0  
+Version: 0.3.0  
 Author: Yushang Cheng  
 License: CC BY 4.0
 
@@ -349,19 +349,47 @@ For proof verification:
 
 If a formal prover is available, use it only after the statement and definitions have stabilized. Formalization should verify a theorem, not conceal a poorly chosen theorem statement.
 
-## Stage 12 — De-dialogue and mathematical rewrite
+## Stage 12 — Boundary formalization and de-dialogue
 
-Only after the mathematics stabilizes, remove traces of the conversational discovery process from the final formal exposition.
+Only after the mathematics stabilizes, convert diagnostic or conversational statements into formal boundary statements.
 
-Replace prose such as:
+A sentence such as
+
+> "uniqueness is not guaranteed"
+
+is usually not a satisfactory final theorem statement. Ask instead:
+
+- Under exactly what condition is uniqueness guaranteed?
+- Is that condition necessary, sufficient, or both?
+- What can happen when the condition fails?
+- Can the complementary region be described by a counterexample-derived theorem?
+
+For example, in a minimization problem over a convex feasible set, strict convexity of the objective along feasible segments implies at most one minimizer; together with existence, the optimum is unique. For maximization, the analogous sufficient condition is strict concavity. The point is not to privilege convexity, but to replace a vague negative diagnostic with a formal condition-result statement.
+
+Use the following rewrite pattern whenever possible:
+
+> "Property P cannot be guaranteed."
+
+becomes
+
+> "Under condition C, P holds."
+
+and, if the boundary is understood,
+
+> "Under C, P holds; under not-C (or under an identified complementary regime), Q can occur."
+
+This is **boundary formalization**: the final theory should state where each behavior lives in the model space.
+
+Also remove traces of the conversational discovery process from the final formal exposition. Replace prose such as:
 
 - "not X, but Y",
 - "we do not need X",
 - "rather than X",
 - "the real point is Y",
 - "AI first suggested...",
+- "we cannot guarantee P",
 
-with formal definitions, hypotheses, propositions, and dependency statements when the history is not itself substantively relevant.
+with formal definitions, hypotheses, propositions, regime partitions, and conclusions when the history is not itself substantively relevant.
 
 Do not erase research history when the history explains the origin of the result, a failed mechanism, or a methodological lesson. Separate research history from the theorem architecture.
 
@@ -429,7 +457,7 @@ The user may invoke one of these modes:
 - `information`: prove information advantage, non-identification, or nearby failure.
 - `dag`: rebuild the theorem/assumption dependency graph.
 - `verify`: audit proof obligations and imported results.
-- `rewrite`: remove conversational residue and restate the final mathematics cleanly.
+- `rewrite`: perform boundary formalization, replace diagnostic negatives with condition-result statements, remove conversational residue, and restate the final mathematics cleanly.
 - `full`: iterate through the complete protocol until a stop condition is reached.
 
 ## Compact output template
@@ -487,7 +515,8 @@ Do not:
 - confuse functional-form robustness with mechanism identification,
 - confuse a convenient representation with an independently meaningful object,
 - retain assumptions merely because they appeared in the original paper,
-- preserve the chronology of discovery when it creates a worse logical structure.
+- preserve the chronology of discovery when it creates a worse logical structure,
+- leave vague negative diagnostics such as "cannot guarantee uniqueness" as the final mathematical statement when a sharper condition-result theorem can be stated.
 
 ## Attribution
 
