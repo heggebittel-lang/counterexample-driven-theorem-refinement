@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+title: "Counterexample-Driven Theorem Refinement (CDTR)"
+message: "If you reuse or adapt this workflow publicly, please cite it and provide attribution under CC BY 4.0."
+type: software
+authors:
+  - family-names: Cheng
+    given-names: Yushang
+license: CC-BY-4.0
+version: 0.1.0
+date-released: 2026-10-07
