@@ -37,7 +37,8 @@ A tiny example is in [`examples/minimal-example.md`](./examples/minimal-example.
 9. Prove why extra information matters, rather than only showing that one design works.
 10. Rebuild theorem/lemma dependencies as a DAG and remove assumption creep.
 11. Track statement status so that conjectures are not silently promoted to theorems.
-12. Remove conversational residue only after the mathematics has stabilized.
+12. Convert vague negative diagnostics into positive boundary theorems whenever possible: replace "P is not guaranteed" with conditions under which P holds and, ideally, a characterization of the complementary regime.
+13. Remove conversational residue only after the mathematics has stabilized.
 
 ## What it is not
 
@@ -51,6 +52,8 @@ CDTR is not:
 - a claim that every counterexample is automatically important.
 
 A counterexample becomes theoretically valuable when it can be verified, generalized, interpreted, and integrated into a broader result.
+
+A second design principle is **boundary formalization**: the final theory should not stop at statements such as "uniqueness is not guaranteed." It should ask what condition guarantees uniqueness, whether that condition is sharp, and what happens in the complementary region.
 
 The workflow explicitly keeps interpretability, verification, and domain meaning as constraints.
 
