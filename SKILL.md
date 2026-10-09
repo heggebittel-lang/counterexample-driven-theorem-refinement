@@ -1,6 +1,6 @@
 # Counterexample-Driven Theorem Refinement (CDTR)
 
-Version: 0.3.2  
+Version: 0.3.3  
 Author: Yushang Cheng  
 License: CC BY 4.0
 
@@ -413,6 +413,12 @@ If a formal prover is available, use it only after the statement and definitions
 
 ## Stage 12 — Boundary formalization and de-dialogue
 
+**Scope: final formal mathematical exposition.** Do not apply this stage
+mechanically to a personal essay, interview, or first-person research story.
+Those genres may legitimately include questions, contrast, disappointment,
+curiosity, and other conversational language. The aim is to remove
+mathematical ambiguity, not to erase the researcher.
+
 Only after the mathematics stabilizes, convert diagnostic or conversational statements into formal boundary statements.
 
 A sentence such as
@@ -461,6 +467,19 @@ After formal verification and mathematical rewriting, perform a separate
 exposition pass suited to the genre. A reflective blog post and a formal
 theorem should not sound identical.
 
+**First choose the genre.** For a formal proof, remove conversational
+justification when a clear theorem suffices. For a first-person community
+post, preserve genuine rhetorical questions and concrete personal anecdotes,
+combine related sentences into natural paragraphs, and vary sentence length.
+Do not manufacture an impersonal nine-point list if the operations form one
+connected research story. Do not confuse reducing repetition with making the
+author sound generic. Use one elementary checked example, where appropriate,
+to carry several research operations through the whole narrative.
+
+The same rigor applies across genres: mathematical claims, quantifiers,
+counterexample certificates, and attribution must remain accurate.
+The difference is in the *voice*, not the standard of proof.
+
 - Turn slogans into executable operations: inputs, actions, and checkable outputs.
 - Explain illustrative notation or replace it with a concrete mathematical
   example. Never leave a dependency arrow semantically undefined.
@@ -475,7 +494,8 @@ theorem should not sound identical.
   verified mathematical or originality claim.
 
 For the detailed checklist and examples, see
-[`EXPOSITION_AUDIT.md`](./EXPOSITION_AUDIT.md).
+[`EXPOSITION_AUDIT.md`](./EXPOSITION_AUDIT.md) and
+[`examples/one-example-full-loop.md`](./examples/one-example-full-loop.md).
 
 ## Stage 13 — Novelty audit comes last
 
