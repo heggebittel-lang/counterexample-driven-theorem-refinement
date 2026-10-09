@@ -37,7 +37,7 @@ For a final reader-facing clarity and repetition pass, see [`EXPOSITION_AUDIT.md
 7. Turn suspicious assumptions into conclusions when possible.
 8. Reduce abstract conditions to primitives, observables, support, or information.
 9. Prove why extra information matters, rather than only showing that one design works.
-10. Rebuild theorem/lemma dependencies as a DAG and remove assumption creep.
+10. Build meaningful intermediate properties and implication chains/branches, rather than repeatedly deriving everything from the strongest primitive assumptions; then reconstruct the dependency DAG and remove assumption creep.
 11. Track statement status so that conjectures are not silently promoted to theorems.
 12. Convert vague negative diagnostics into positive boundary theorems whenever possible: replace "P is not guaranteed" with conditions under which P holds and, ideally, a characterization of the complementary regime.
 13. Remove conversational residue only after the mathematics has stabilized.
