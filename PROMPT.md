@@ -36,7 +36,7 @@ Proceed as follows:
 
 10. Information advantage / nearby failure: do not only prove that a richer design works. Compare weak and rich information sets. Try to prove a negative result under the weak information set via observationally equivalent environments that disagree on the target. When relevant, construct arbitrarily nearby failures and state the metric/topology.
 
-11. Dependency DAG: rebuild the dependencies among definitions, assumptions, lemmas, propositions, and conclusions. Remove unused assumptions, proof-artifact dependencies, circularity, and assumptions inherited only because earlier lemmas were over-broad.
+11. Meaningful dependency factorization: do more than list which assumptions support each conclusion. Derive useful intermediate properties, then organize valid implications into chains and branches: A=>B=>C=>D, B=>E, and D AND E=>F. When A=>B and B=>C, emphasize B=>C when B is a genuinely weaker, interpretable, or reusable premise; A=>C still holds by transitivity. Audit from the final theorem backwards to its immediate parents and forward from primitive assumptions. Separate background domains from substantive assumptions, verify every edge and every joint-premise claim, and do not fabricate cosmetic intermediate lemmas. Remove unused assumptions, proof-artifact dependencies, circularity, and assumption creep.
 
 12. Verification: distinguish theorem failure from proof failure; check quantifiers, domains, boundary cases, existence vs uniqueness, imported theorem hypotheses, normalization vs identification, and hidden regularity assumptions.
 
