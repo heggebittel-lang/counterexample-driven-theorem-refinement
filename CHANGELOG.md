@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.3.1 — 2026-10-09
+
+Exposition audit inspired by practical editorial feedback.
+
+- Added a separate reader-facing exposition checklist.
+- Made operational clarity distinct from proof verification.
+- Added examples of clearly defined assumption deletion and dependency splitting.
+- Added a warning that C=>P does not itself imply not-C=>Q.
+- Added paragraph-function and repetition checks for personal research essays.
+- Preserved authentic voice while compressing repeated self-description.
+
 ## 0.3.0 — 2026-10-07
 
 Added boundary formalization as a final-theory principle.
