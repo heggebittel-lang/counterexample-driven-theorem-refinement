@@ -1,6 +1,6 @@
 # Counterexample-Driven Theorem Refinement (CDTR)
 
-Version: 0.3.1  
+Version: 0.3.2  
 Author: Yushang Cheng  
 License: CC BY 4.0
 
@@ -300,19 +300,77 @@ If yes, state the topology/metric and exactly which assumptions the perturbation
 
 This stage turns "my method works" into "this extra information is doing indispensable work" or "the result lies exactly on this failure boundary."
 
-## Stage 10 — Dependency DAG reconstruction
+## Stage 10 — Meaningful dependency factorization and DAG reconstruction
+
+Do not merely separate a bundled list of assumptions according to which final
+conclusions use them. Search for **meaningful intermediate mathematical
+properties** that support later results. The aim is to replace repeatedly
+proving conclusions directly from strong primitive assumptions with reusable
+implication chains and branches.
+
+For example, if A is a primitive condition and A => B => C, record and
+independently verify both steps. Although A => C still holds by transitivity,
+the B => C statement is potentially more general: it holds whenever B is
+available, even in settings where the stronger A fails.
+
+A branching structure can be:
+
+- A => B
+- B => C => D
+- B => E
+- D AND E => F
+
+The final dependency on D AND E must be proved: two arrows into F indicate
+a joint requirement, not two separate sufficiency claims.
+
+Work in **both directions**:
+
+1. **Forward construction:** from primitive objects/conditions, derive
+   intermediate invariants, properties, and local lemmas.
+2. **Backward auditing:** from each final result, identify its weakest
+   currently justified immediate parent statements.
+3. **Factorization:** replace overly strong direct dependencies with the
+   available intermediate property when it actually suffices.
+4. **Branching and recombination:** allow independent consequences to branch
+   and later meet in a theorem requiring their conjunction.
+5. **Deletion and reuse:** test whether replacing A by B leaves the relevant
+   downstream result intact; reuse B in another context.
+6. **Independent verification:** require a proof or imported result for every
+   edge, check direction, and distinguish hypothesis from conclusion.
+7. **Semantic test:** avoid ornamental chains. Every intermediate statement
+   should communicate a useful, independently meaningful or reusable
+   property; A => A or A => (A AND true) adds no mathematical structure.
+
+Keep ambient domains/background frameworks separate from assumptions.
+For example, "working over the real numbers" is a setting, not by itself
+a proof of monotonicity or convexity of an arbitrary function.
+
+A simple nontrivial pattern:
+
+- A: f is continuously differentiable on [0,1], with f'(x)>0 on (0,1).
+- A => B1: f is continuous.
+- A => B2: f is strictly increasing.
+- B1 AND endpoint sign reversal => a zero exists.
+- B2 => at most one zero.
+- existence AND at-most-one => a unique zero.
+
+The dependency split reveals that the differentiability condition can be
+weakened: continuity and strict monotonicity already suffice for the
+respective downstream results.
 
 Build a directed acyclic graph whose nodes are:
 
-- definitions,
+- ambient domains and definitions (distinguished from claims),
 - primitive assumptions,
-- derived conditions,
+- derived conditions and intermediate properties,
 - lemmas,
 - propositions,
 - theorems,
 - corollaries.
 
-Draw an edge X -> Y only when Y genuinely uses X.
+Draw an edge X -> Y only when Y genuinely uses X. For joint premises use
+a conjunction or an explicit hyperedge; do not let an ordinary arrow falsely
+suggest that each parent individually suffices.
 
 Audit for:
 
@@ -322,9 +380,13 @@ Audit for:
 - circular dependencies,
 - conclusions hidden inside assumptions,
 - lemmas that can be split,
-- proof artifacts that have contaminated later statements.
+- proof artifacts that have contaminated later statements,
+- strong A => C dependencies that can be factored through a meaningful weaker B.
 
-For every theorem, output its minimal currently justified parent set in the DAG.
+For every theorem, output its minimal currently justified immediate parent set
+and, separately, the primitive assumptions from which those parents follow.
+The goal is **semantic modularity and generality**, not maximizing the length
+of a chain or the visual beauty of a graph.
 
 ## Stage 11 — Verification ledger
 
@@ -477,7 +539,7 @@ The user may invoke one of these modes:
 - `characterize`: push sufficient results toward necessity / iff statements.
 - `primitive`: reduce high-level assumptions to primitives, observables, support, or information.
 - `information`: prove information advantage, non-identification, or nearby failure.
-- `dag`: rebuild the theorem/assumption dependency graph.
+- `dag`: discover meaningful intermediate properties, factor strong direct implications into reusable chains/branches, and rebuild the theorem/assumption dependency graph.
 - `verify`: audit proof obligations and imported results.
 - `rewrite`: perform boundary formalization, replace diagnostic negatives with condition-result statements, remove conversational residue, and restate the final mathematics cleanly.
 - `exposition`: audit operational clarity, examples, quantifiers, paragraph functions, repetition, and reader-facing communication; see `EXPOSITION_AUDIT.md`.
@@ -515,7 +577,7 @@ Use this template unless the user requests another format:
 [new theorem / partition / characterization]
 
 ### Dependency update
-[old parents -> new parents]
+[old parents -> meaningful intermediate properties -> immediate parents; branching/joint premises when needed]
 
 ### Remaining proof obligations
 [precise obligations]
