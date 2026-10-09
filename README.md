@@ -23,8 +23,13 @@ For a single copy-paste prompt, use [`PROMPT.md`](./PROMPT.md).
 For maintaining a long-running project, copy [`templates/RESEARCH_STATE.md`](./templates/RESEARCH_STATE.md) into your project and update it after each research iteration.
 
 A tiny example is in [`examples/minimal-example.md`](./examples/minimal-example.md).
+A second [worked example](./examples/one-example-full-loop.md) follows the
+same elementary zero-finding problem from assumption deletion through
+counterexample absorption, dependency factorization, information limits, and exposition.
 
 For a final reader-facing clarity and repetition pass, see [`EXPOSITION_AUDIT.md`](./EXPOSITION_AUDIT.md).
+This makes an explicit distinction between formal-theorem presentation and a personal research essay:
+both require accurate mathematics, but only the first needs to eliminate conversational narration.
 
 ## What the protocol tries to do
 
@@ -40,7 +45,7 @@ For a final reader-facing clarity and repetition pass, see [`EXPOSITION_AUDIT.md
 10. Build meaningful intermediate properties and implication chains/branches, rather than repeatedly deriving everything from the strongest primitive assumptions; then reconstruct the dependency DAG and remove assumption creep.
 11. Track statement status so that conjectures are not silently promoted to theorems.
 12. Convert vague negative diagnostics into positive boundary theorems whenever possible: replace "P is not guaranteed" with conditions under which P holds and, ideally, a characterization of the complementary regime.
-13. Remove conversational residue only after the mathematics has stabilized.
+13. Remove conversational residue from **formal mathematical exposition** only after the mathematics has stabilized; preserve genuine personal voice in reflective essays and discussions.
 
 ## What it is not
 
