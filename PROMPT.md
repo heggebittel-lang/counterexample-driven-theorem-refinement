@@ -42,7 +42,9 @@ Proceed as follows:
 
 13. Boundary formalization and final rewrite: after the mathematics stabilizes, do not leave vague diagnostic negatives as the final result. Replace statements such as "uniqueness is not guaranteed" with a formal condition-result statement: identify a condition C under which uniqueness holds, state whether C is sufficient/necessary, and characterize what may occur when C fails. For example, for minimization over a convex feasible set, strict convexity along feasible segments gives at most one minimizer; with existence, the optimum is unique (strict concavity is the analogous maximization condition). Then remove conversational residue such as "not X but Y," "we do not need X," or "rather than X" and replace it with definitions, conditions, regime partitions, and formal conclusions.
 
-14. Novelty audit last: do not create novelty by mechanically combining papers. Separate standard tools from the substantive claim, and do not make a priority claim when prior art is uncertain.
+14. Exposition audit for human readers: define each operation so it can be executed, replace undefined symbolic shorthand with an explained example, check implication directions (C=>P does not entail not-C=>Q), and remove repeated self-description. Let each paragraph have a distinct role. Keep the author's personal research voice rather than over-polishing it. See EXPOSITION_AUDIT.md for the complete checklist.
+
+15. Novelty audit last: do not create novelty by mechanically combining papers. Separate standard tools from the substantive claim, and do not make a priority claim when prior art is uncertain.
 
 At each iteration output:
 - Current claim
