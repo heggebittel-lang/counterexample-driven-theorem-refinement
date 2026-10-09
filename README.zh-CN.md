@@ -44,7 +44,7 @@ CDTR 的目标是把 AI 的角色改成一个 adversarial research partner：它
 6. **危险假设倒过来**：如果一个假设看起来几乎等于结论，尝试把它变成 theorem 或 necessary condition。
 7. **压到 primitives / observables / support / information**：不要停留在无法观察的抽象条件。
 8. **证明 information advantage / nearby failure**：说明为什么额外信息真的不可替代。
-9. **依赖关系重构**：避免 assumption creep，把 existence、uniqueness、identification 等不同结论拆开。
+9. **层层构造有意义的中间结论，允许分叉与汇合**：例如 `A => B => C => D`、`B => E`、`D 且 E => F`。如果 `B => C` 已经成立，就不要在最终依赖图里始终把更强的 `A` 当作 `C` 的直接前提。不过 `A => C` 仍然逻辑成立，改写的价值在于揭示更弱前提、可复用的中间定理和真实依赖，而不是为了让图看起来更长或更漂亮。区分“在实数域上研究”等背景设定与真正推导出函数性质的假设，并验证每条依赖。
 10. **把负面诊断改写成边界定理**：不要把“不能保证唯一”“可能失败”作为最终数学表述；继续问“在什么条件下唯一”“条件拿掉后出现什么”，尽量写成 `C => P`，或者进一步写成不同 regime 的划分。
 11. **最后再去掉对话痕迹**：研究过程可以很乱，但最终 theorem architecture 应该由定义、条件、regime 和结论组织。
 12. **最后再做 novelty audit**：先把数学对象搞清楚，再查是不是新结果。
