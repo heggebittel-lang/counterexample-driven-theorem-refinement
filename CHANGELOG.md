@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.3.3 — 2026-10-09
+
+Genre-sensitive writing and a unified elementary example.
+
+- Distinguished formal theorem exposition from conversational research essays: preserve the author's human voice without weakening mathematical verification.
+- Added a checked example showing assumption deletion, counterexample absorption, meaningful dependency structure, and endpoint-information non-identification in one sequence.
+- Improved exposition audit for paragraph rhythm, repetition, rhetorical questions, and distinctive personal analogies.
+- Added explicit guidance on accurately disclosing AI structural editing, translation, and mathematical-example suggestions.
+- Kept the still-unpublished community blog submission outside this public repository.
+
 ## 0.3.2 — 2026-10-09
 
 Meaningful layered and branching dependency architecture.
