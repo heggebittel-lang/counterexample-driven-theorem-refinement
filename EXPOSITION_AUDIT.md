@@ -4,6 +4,12 @@ This is an optional **communication pass** after the mathematics has been
 checked. It is not a substitute for proof verification. Use it when preparing
 a personal essay, research note, preprint, talk, or public prompt.
 
+**Genre is a mathematical-writing constraint, not decoration.**
+A theorem proof should expose verified hypotheses and conclusions. A
+first-person community essay should expose the human choices that led the
+researcher to those questions. Both need clear and correct mathematics.
+Do not impose the proof's impersonal style on the essay.
+
 ## 1. Replace slogans with executable operations
 
 A first-time reader should know what the instruction tells the researcher to
@@ -72,11 +78,32 @@ story. A personal statement is useful when it supplies an example or explains
 the author's question; it is redundant when it merely repeats the author's
 lack of certainty or institutional position.
 
-## 6. Compactness without flattening voice
+## 6. One example can carry several operations
+
+Prefer one verified, low-dimensional example that naturally connects
+assumption removal, a counterexample worth retaining, intermediate lemmas,
+and an information limit. Reusing the *mathematical object* is not
+repetition when each pass reveals a genuinely new result.
+
+For a fully checked illustration, see
+[`examples/one-example-full-loop.md`](./examples/one-example-full-loop.md).
+
+## 7. Compactness without flattening voice
 
 Do not convert a researcher's distinctive experience into generic
 promotional or corporate prose. Compress repeated framing, not the specific
 episode that explains the insight.
+
+For first-person essays, prefer natural paragraph units to a chain of
+single-sentence paragraphs; alternate longer narrative sentences with
+short questions or conclusions. Allow deliberate repetition for rhythm or
+emphasis, but remove repetition that supplies no new meaning. Do not imitate
+archaic literary diction merely to sound human. Preserve a phrase such as
+"looking for a game walkthrough" if it is truly the author's way of speaking.
+
+Do not auto-convert "why should I throw that counterexample away?" into
+"counterexample absorption constitutes the central research paradigm."
+The latter may be useful in a protocol; the former can be better in an essay.
 
 Preserve:
 - the interesting counterexample and what was learned from it;
@@ -101,4 +128,10 @@ Remove:
 - Does each paragraph add something new?
 - Is the personal background stated just once?
 - Does the last paragraph ask a precise question rather than repeat the post?
-- Is translation/editing assistance disclosed accurately?
+- Is the voice appropriate to the genre, rather than mechanically "academic"?
+- Are paragraphs natural units with varied sentence rhythm?
+- Did the rewrite erase a distinctive analogy or sincere question?
+- Is translation, structural reorganization, and AI-suggested mathematics
+  disclosed accurately when those forms of assistance were used?
+- Has the AI avoided posting a submitted but unpublished essay without
+  the author's express instruction?
