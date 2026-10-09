@@ -32,6 +32,7 @@ CDTR 的目标是把 AI 的角色改成一个 adversarial research partner：它
 - [`PROMPT.md`](./PROMPT.md)：单段可复制提示词。
 - [`templates/RESEARCH_STATE.md`](./templates/RESEARCH_STATE.md)：长期项目的状态表。
 - [`examples/minimal-example.md`](./examples/minimal-example.md)：最小示例。
+- [`EXPOSITION_AUDIT.md`](./EXPOSITION_AUDIT.md)：给真实读者看的表达审查，检查操作是否可执行、符号是否明确、量词/蕴含是否正确，以及段落是否重复。
 
 ## 这套流程特别强调的事情
 
