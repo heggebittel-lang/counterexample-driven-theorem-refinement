@@ -32,6 +32,7 @@ CDTR 的目标是把 AI 的角色改成一个 adversarial research partner：它
 - [`PROMPT.md`](./PROMPT.md)：单段可复制提示词。
 - [`templates/RESEARCH_STATE.md`](./templates/RESEARCH_STATE.md)：长期项目的状态表。
 - [`examples/minimal-example.md`](./examples/minimal-example.md)：最小示例。
+- [`examples/one-example-full-loop.md`](./examples/one-example-full-loop.md)：通过同一个零点例子连贯展示删假设、保留反例、建立依赖关系、证明端点信息的不足，以及最后怎么表达。
 - [`EXPOSITION_AUDIT.md`](./EXPOSITION_AUDIT.md)：给真实读者看的表达审查，检查操作是否可执行、符号是否明确、量词/蕴含是否正确，以及段落是否重复。
 
 ## 这套流程特别强调的事情
@@ -46,7 +47,7 @@ CDTR 的目标是把 AI 的角色改成一个 adversarial research partner：它
 8. **证明 information advantage / nearby failure**：说明为什么额外信息真的不可替代。
 9. **层层构造有意义的中间结论，允许分叉与汇合**：例如 `A => B => C => D`、`B => E`、`D 且 E => F`。如果 `B => C` 已经成立，就不要在最终依赖图里始终把更强的 `A` 当作 `C` 的直接前提。不过 `A => C` 仍然逻辑成立，改写的价值在于揭示更弱前提、可复用的中间定理和真实依赖，而不是为了让图看起来更长或更漂亮。区分“在实数域上研究”等背景设定与真正推导出函数性质的假设，并验证每条依赖。
 10. **把负面诊断改写成边界定理**：不要把“不能保证唯一”“可能失败”作为最终数学表述；继续问“在什么条件下唯一”“条件拿掉后出现什么”，尽量写成 `C => P`，或者进一步写成不同 regime 的划分。
-11. **最后再去掉对话痕迹**：研究过程可以很乱，但最终 theorem architecture 应该由定义、条件、regime 和结论组织。
+11. **把数学论文和个人随笔区分开**：最终正式定理应尽量去掉讨论过程中的辩护、绕路和不精确的负面表述；但个人研究随笔应该保留真实的提问、比喻、好奇心和说话语气。删掉重复不等于删掉作者本人。两者都必须保证数学内容正确。
 12. **最后再做 novelty audit**：先把数学对象搞清楚，再查是不是新结果。
 
 ## 一个重要的停止规则
