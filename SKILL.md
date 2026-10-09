@@ -1,6 +1,6 @@
 # Counterexample-Driven Theorem Refinement (CDTR)
 
-Version: 0.3.0  
+Version: 0.3.1  
 Author: Yushang Cheng  
 License: CC BY 4.0
 
@@ -393,6 +393,28 @@ with formal definitions, hypotheses, propositions, regime partitions, and conclu
 
 Do not erase research history when the history explains the origin of the result, a failed mechanism, or a methodological lesson. Separate research history from the theorem architecture.
 
+## Reader-facing exposition audit (optional)
+
+After formal verification and mathematical rewriting, perform a separate
+exposition pass suited to the genre. A reflective blog post and a formal
+theorem should not sound identical.
+
+- Turn slogans into executable operations: inputs, actions, and checkable outputs.
+- Explain illustrative notation or replace it with a concrete mathematical
+  example. Never leave a dependency arrow semantically undefined.
+- Audit each example's logical direction and quantifiers. In particular,
+  `C => P` does not imply `not C => Q`.
+- Let each paragraph serve one purpose. Introduce personal background once,
+  describe the workflow once, use one research episode, and end with a
+  specific question.
+- Compress repeated meta-commentary while retaining the author's voice,
+  substantive uncertainty, and actual research experience.
+- Check that a claim about a good research workflow is not confused with a
+  verified mathematical or originality claim.
+
+For the detailed checklist and examples, see
+[`EXPOSITION_AUDIT.md`](./EXPOSITION_AUDIT.md).
+
 ## Stage 13 — Novelty audit comes last
 
 Do not generate a theorem by mechanically combining papers and calling the intersection a research gap.
@@ -458,6 +480,7 @@ The user may invoke one of these modes:
 - `dag`: rebuild the theorem/assumption dependency graph.
 - `verify`: audit proof obligations and imported results.
 - `rewrite`: perform boundary formalization, replace diagnostic negatives with condition-result statements, remove conversational residue, and restate the final mathematics cleanly.
+- `exposition`: audit operational clarity, examples, quantifiers, paragraph functions, repetition, and reader-facing communication; see `EXPOSITION_AUDIT.md`.
 - `full`: iterate through the complete protocol until a stop condition is reached.
 
 ## Compact output template
