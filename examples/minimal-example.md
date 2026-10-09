@@ -133,3 +133,32 @@ but rather
 > delete assumption -> counterexample -> recognize an interesting regime -> prove a theorem about that regime -> characterize the boundary between regimes.
 
 This is the central CDTR principle.
+
+
+## Meaningful chains, branches, and recombination
+
+Start with a *stronger* primitive condition:
+
+- A: f is continuously differentiable on [0,1] and f'(x)>0 on (0,1).
+- S: f(0)<0<f(1).
+
+A can be factored into independently useful intermediate properties:
+
+- A => B: f is continuous on [0,1].
+- A => C: f is strictly increasing on [0,1].
+- B AND S => D: at least one zero exists (intermediate value theorem).
+- C => E: at most one zero exists.
+- D AND E => F: exactly one zero exists.
+
+This is not merely a longer version of A AND S => F. It reveals that
+differentiability is unnecessarily strong for F: the two downstream
+properties B and C suffice with S.
+
+A more general theorem is:
+
+> For a continuous, strictly increasing f:[0,1]->R satisfying
+> f(0)<0<f(1), there is a unique root in (0,1).
+
+The dependency graph is more informative precisely because it exposes
+a genuine weakening of the primitive hypotheses. Do not manufacture
+intermediate propositions with no independent mathematical role.
