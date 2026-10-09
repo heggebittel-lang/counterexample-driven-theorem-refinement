@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.3.2 — 2026-10-09
+
+Meaningful layered and branching dependency architecture.
+
+- Elevated chains, intermediate properties, branching, and recombination from a presentation preference to a substantive theorem-design objective.
+- Distinguished logical implication from the exposition of immediate dependencies: A=>B=>C implies A=>C, but B=>C may be a more general reusable theorem.
+- Added forward construction from primitives and backward auditing from conclusions.
+- Added checks for nontrivial intermediate properties, joint hypotheses, and ambient background versus substantive assumptions.
+- Added a worked root-existence/uniqueness branch illustrating assumption weakening.
+
 ## 0.3.1 — 2026-10-09
 
 Exposition audit inspired by practical editorial feedback.
