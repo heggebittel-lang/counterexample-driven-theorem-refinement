@@ -24,6 +24,8 @@ For maintaining a long-running project, copy [`templates/RESEARCH_STATE.md`](./t
 
 A tiny example is in [`examples/minimal-example.md`](./examples/minimal-example.md).
 
+For a final reader-facing clarity and repetition pass, see [`EXPOSITION_AUDIT.md`](./EXPOSITION_AUDIT.md).
+
 ## What the protocol tries to do
 
 1. Delete assumptions rather than automatically preserve them.
